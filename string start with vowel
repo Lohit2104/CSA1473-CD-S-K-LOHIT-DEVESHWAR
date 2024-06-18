@@ -1,0 +1,19 @@
+%{
+#include <stdio.h>
+%}
+
+%%
+^[aeiouAEIOU][a-zA-Z ]*  { printf("String starts with a vowel: %s\n", yytext); }
+.*                       { printf("Ignored string: %s\n", yytext); }
+\n                       { /* Ignore newlines */ }
+%%
+
+int main(void) {
+    printf("Enter input strings (CTRL+Z to end):\n");
+    yylex();
+    return 0;
+}
+
+int yywrap(void) {
+    return 1;
+}

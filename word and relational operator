@@ -1,0 +1,51 @@
+%{
+#include <stdio.h>
+%}
+
+%%
+
+[a-zA-Z]+        {
+                    printf("Word: %s\n", yytext);
+                 }
+
+"=="             {
+                    printf("Relational operator: %s\n", yytext);
+                 }
+
+"!="             {
+                    printf("Relational operator: %s\n", yytext);
+                 }
+
+"<="             {
+                    printf("Relational operator: %s\n", yytext);
+                 }
+
+">="             {
+                    printf("Relational operator: %s\n", yytext);
+                 }
+
+"<"              {
+                    printf("Relational operator: %s\n", yytext);
+                 }
+
+">"              {
+                    printf("Relational operator: %s\n", yytext);
+                 }
+
+[ \t\n]+         ; // Ignore whitespace
+
+.                {
+                    printf("Unknown character: %s\n", yytext);
+                 }
+
+%%
+
+int main() {
+    printf("Enter words and relational operators (end with CTRL+D on Unix or CTRL+Z on Windows):\n");
+    yylex();
+    return 0;
+}
+
+int yywrap() {
+    return 1;
+}
